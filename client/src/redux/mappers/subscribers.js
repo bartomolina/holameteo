@@ -1,5 +1,6 @@
-export function mainMap({ location }) {
+export function mainMap({ location, forecast }) {
   return {
-    location
+    location,
+    forecast
   }
 }
