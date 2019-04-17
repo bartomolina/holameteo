@@ -4,8 +4,8 @@ const axios = require('axios')
 
 const router = require('express').Router()
 
-router.get('/forecast/:lat/:long', (req, res) => {
-    axios.get(`https://api.darksky.net/forecast/${process.env.DARKSKY_API}/${req.params.lat},${req.params.long}`)
+router.get('/forecast/:lat/:long/:units', (req, res) => {
+    axios.get(`https://api.darksky.net/forecast/${process.env.DARKSKY_API}/${req.params.lat},${req.params.long}?units=${req.params.units}`)
         .then(res => res.data)
         .then(forecast => {
             var newforecast = forecast.daily.data.map((value) => {
@@ -57,9 +57,9 @@ router.get('/forecast/:lat/:long', (req, res) => {
                         max: Math.round(value.temperatureHigh),
                         min: Math.round(value.temperatureLow)
                     },
-                    humidity: value.humidity,
+                    humidity: value.humidity * 100,
                     wind: value.windSpeed,
-                    precipitation: value.precipProbability
+                    precipitation: value.precipProbability * 100
                 }
             })
             return res.send(newforecast)
