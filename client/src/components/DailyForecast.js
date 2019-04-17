@@ -7,9 +7,10 @@ let DailyForecast = props => {
     <div>
       {forecast && (
         <div>
-          Forecast for: {`Day: ${forecast.date.day}/${forecast.date.month}/${forecast.date.year}`}
+          Forecast for: {`${forecast.date.day}/${forecast.date.month}/${forecast.date.year}`}
           <ul>
-            <li>{forecast.temperature}</li>
+            <li>{forecast.temperature.max}</li>
+            <li>{forecast.temperature.min}</li>
             <li>{forecast.humidity}</li>
             <li>{forecast.wind}</li>
             <li>{forecast.precipitation}</li>

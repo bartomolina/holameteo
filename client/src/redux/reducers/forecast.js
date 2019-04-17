@@ -17,11 +17,9 @@ export function loadForecast(forecast) {
     return { type: LOAD, forecast }
 }
 
-export function getForecast(days) {
+export function getForecast(location) {
     return dispatch => {
-        Promise.all([...Array(days)].map((name, index) => {
-            return axios.get(`/api/forecast/1`).then (res => res.data)
-        }))
-        .then(forecast => dispatch(loadForecast(forecast)))
+        axios.get(`/api/forecast/40/42`).then(res => res.data)
+            .then(forecast => dispatch(loadForecast(forecast)))
     }
 }

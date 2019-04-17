@@ -8,7 +8,9 @@ class Main extends Component {
     const { getLocation, getForecast } = this.props
 
     getLocation()
-    getForecast(5)
+    if (this.props.location) {
+      getForecast(this.props.location)
+    }
   }
 
   render() {

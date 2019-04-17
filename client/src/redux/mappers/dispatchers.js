@@ -5,8 +5,8 @@ export function mainDispatcher(dispatch) {
     getLocation: () => {
       dispatch(store.getLocation())
     },
-    getForecast: (days) => {
-      dispatch(store.getForecast(days))
+    getForecast: (location) => {
+      dispatch(store.getForecast(location))
     }
   }
 }
