@@ -6,8 +6,10 @@ import DailyForecast from '../components/DailyForecast'
 class Main extends Component {
   constructor() {
     super()
+    
+    let storedMode = localStorage.getItem('holaweather-mode');
     this.state = {
-      mode: 'si'
+      mode: storedMode ? storedMode : 'si'
     }
 
     this.switchMode = this.switchMode.bind(this)
@@ -16,6 +18,7 @@ class Main extends Component {
   switchMode(mode) {
     const { getForecast } = this.props
     this.setState({ mode })
+    localStorage.setItem('holaweather-mode', mode);
 
     navigator.geolocation.getCurrentPosition((location) => {
       getForecast(location.coords, this.state.mode)
