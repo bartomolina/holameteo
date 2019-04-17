@@ -26,6 +26,13 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use('/api', require('./server/api'))
 
+if (process.env.NODE_ENV === 'production') {
+     app.use(express.static(path.join(__dirname, 'client/build')));
+     app.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+}
+
 app.listen(app.get('port'), () => {
     console.log(`Find the server at: http://localhost:${app.get('port')}/`)
 })
