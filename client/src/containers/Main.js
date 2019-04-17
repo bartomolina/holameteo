@@ -5,17 +5,16 @@ import DailyForecast from '../components/DailyForecast'
 
 class Main extends Component {
   componentDidMount() {
-    const { getLocation, getForecast } = this.props
+    const { getForecast } = this.props
 
-    getLocation()
-    if (this.props.location) {
-      getForecast(this.props.location)
-    }
+    navigator.geolocation.getCurrentPosition((location) => {
+      getForecast(location.coords)
+    })
   }
 
   render() {
     return (
-      <div>
+      <div className="holaweather-container text-center animated fadeInRightBig">
         {[...Array(5)].map((name, index) => {
           return (
             <div key={index}>
@@ -23,8 +22,6 @@ class Main extends Component {
             </div>
           )
         })}
-        <div>Longitude: {this.props.location.longitude}</div>
-        <div>Latitude: {this.props.location.latitude}</div>
       </div>
     )
   }

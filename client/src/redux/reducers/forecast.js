@@ -19,7 +19,7 @@ export function loadForecast(forecast) {
 
 export function getForecast(location) {
     return dispatch => {
-        axios.get(`/api/forecast/40/42`).then(res => res.data)
+        axios.get(`/api/forecast/${location.latitude}/${location.longitude}`).then(res => res.data)
             .then(forecast => dispatch(loadForecast(forecast)))
     }
 }

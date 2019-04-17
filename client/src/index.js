@@ -4,7 +4,10 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
+import './css/animate.css'
 import './css/inspinia.css'
+import './css/custom.css'
+import './css/weather-icons.css'
 import store from './redux'
 import App from './App';
 import * as serviceWorker from './serviceWorker';

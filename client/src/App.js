@@ -5,7 +5,7 @@ import Main from './containers/Main'
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="wrapper wrapper-content">
         <Route exact path="/" component={Main} />
       </div>
     )

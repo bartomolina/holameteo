@@ -9,6 +9,41 @@ router.get('/forecast/:lat/:long', (req, res) => {
         .then(res => res.data)
         .then(forecast => {
             var newforecast = forecast.daily.data.map((value) => {
+                let icon = ''
+                
+                switch (value.icon) {
+                    case 'clear-day':
+                        icon = 'wi-day-sunny'
+                        break
+                    case 'clear-night':
+                        icon = 'wi-night-clear'
+                        break
+                    case 'rain':
+                        icon = 'wi-rain'
+                        break
+                    case 'snow':
+                        icon = 'wi-snow'
+                        break
+                    case 'sleet':
+                        icon = 'wi-sleet'
+                        break
+                    case 'wind':
+                        icon = 'wi-windy'
+                        break
+                    case 'fog':
+                        icon = 'wi-fog'
+                        break
+                    case 'cloudy':
+                        icon = 'wi-cloudy'
+                        break
+                    case 'partly-cloudy-day':
+                        icon = 'wi-day-cloudy-high'
+                        break
+                    case 'partly-cloudy-night':
+                        icon = 'wi-night-partly-cloudy'
+                        break
+                }
+
                 let date = new Date(value.time * 1000)
                 return {
                     time: value.time,
@@ -17,9 +52,10 @@ router.get('/forecast/:lat/:long', (req, res) => {
                         month: date.getMonth() + 1,
                         year: date.getFullYear()
                     },
+                    icon,
                     temperature: {
-                        max: value.temperatureHigh,
-                        min: value.temperatureLow
+                        max: Math.round(value.temperatureHigh),
+                        min: Math.round(value.temperatureLow)
                     },
                     humidity: value.humidity,
                     wind: value.windSpeed,
