@@ -67,15 +67,3 @@ router.get('/forecast/:lat/:long/:units', (req, res) => {
 })
 
 module.exports = router
-
-/*res.send({
-        date: {
-            day: 1,
-            month: 24,
-            year: 2019
-        },
-        temperature: 25,
-        humidity: 20,
-        wind: 10,
-        precipitation: 5
-    })*/
